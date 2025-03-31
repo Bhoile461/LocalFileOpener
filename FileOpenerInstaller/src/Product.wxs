@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="*" Name="FileOpener" Language="1033" Version="1.0.0.0" Manufacturer="Brandon Hoile" UpgradeCode="eaae051d-be73-4848-a56c-b5f92e8706c5">
+    <Package InstallerVersion="500" Compressed="yes" InstallScope="perMachine" Platform="x64" />
+
+    <MediaTemplate />
+    <MajorUpgrade DowngradeErrorMessage="A newer version is already installed." />
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFiles64Folder">
+        <Directory Id="INSTALLFOLDER" Name="FileOpener" />
+      </Directory>
+    </Directory>
+
+    <Feature Id="MainFeature" Title="FileOpener" Level="1">
+      <ComponentGroupRef Id="FileOpenerFiles" />
+    </Feature>
+  </Product>
+</Wix>

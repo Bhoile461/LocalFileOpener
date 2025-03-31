@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <DirectoryRef Id="INSTALLFOLDER">
+      <Component Id="FileOpenerBatch" Guid="b4683eef-3f7a-48c3-b7e9-8ca91d58e153" Win64="yes">
+        <File Id="file_open.bat" Name="file_opener.bat" Source="..\FileOpener\file_opener.bat" KeyPath="yes" />
+
+        <!-- Registry Entries -->
+        <RegistryKey Root="HKCR" Key="fileopen" ForceCreateOnInstall="yes">
+          <RegistryValue Type="string" Value="URL:File Opener Protocol" />
+          <RegistryValue Name="URL Protocol" Type="string" Value="" />
+        </RegistryKey>
+
+        <RegistryKey Root="HKCR" Key="fileopen\shell\open\command" ForceCreateOnInstall="yes">
+          <RegistryValue Type="string" Value="&quot;[ProgramFiles64Folder]FileOpener\file_opener.bat&quot; &quot;%1&quot;" />
+        </RegistryKey>
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+
+  <Fragment>
+    <ComponentGroup Id="FileOpenerFiles">
+      <ComponentRef Id="FileOpenerBatch" />
+    </ComponentGroup>
+  </Fragment>
+</Wix>
